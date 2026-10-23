@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="es"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F4F8FD" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#08111F" media="(prefers-color-scheme: dark)">
+<title>España no puede dar por ganada la ciberseguridad en la era de la IA · Miguel Peidro Paredes</title>
+<meta name="description" content="Tenemos una base sólida. El riesgo es que la arquitectura de mañana quede fuera de la defensa de hoy.">
+<meta name="author" content="Miguel Peidro Paredes">
+<meta property="og:type" content="article"><meta property="og:locale" content="es_ES">
+<meta property="og:title" content="España no puede dar por ganada la ciberseguridad en la era de la IA"><meta property="og:description" content="Tenemos una base sólida. El riesgo es que la arquitectura de mañana quede fuera de la defensa de hoy.">
+<meta property="og:url" content="https://miguelpeidrotrabajo.github.io/portfolio/articulos/espana-ciberseguridad-ia/"><meta property="og:image" content="https://miguelpeidrotrabajo.github.io/portfolio/articulos/img/og-espana-ciberseguridad-ia.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://miguelpeidrotrabajo.github.io/portfolio/articulos/espana-ciberseguridad-ia/">
+<link rel="icon" type="image/png" href="../../favicon-light.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../../favicon-dark.png" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+:root{
+  --bg:#F4F8FD;--surface:#FFFFFF;--navy:#0B1F3A;--text:#3A4A60;--muted:#5D6B80;--blue:#1A73E8;--blue-soft:#8FB6EC;
+  --line:#D5E2F3;--tint:#E7F0FC;--hero:linear-gradient(135deg,#F7FAFF 0%,#EEF4FC 55%,#DFEAF8 100%);
+  --bar:linear-gradient(90deg,#1565D8,#1E88E5);--shadow:0 10px 40px rgba(20,70,140,.08);
+  --sans:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;--gut:clamp(16px,4vw,40px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;
+  --bg:#08111F;--surface:#0F1B2E;--navy:#EAF1FB;--text:#B7C4D6;--muted:#8796AB;--blue:#5AA2FF;--blue-soft:#4D78B0;
+  --line:#1D2C44;--tint:#10213A;--hero:linear-gradient(135deg,#0A1526 0%,#0C1B33 60%,#10284A 100%);--shadow:0 10px 40px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{color-scheme:dark;
+  --bg:#08111F;--surface:#0F1B2E;--navy:#EAF1FB;--text:#B7C4D6;--muted:#8796AB;--blue:#5AA2FF;--blue-soft:#4D78B0;
+  --line:#1D2C44;--tint:#10213A;--hero:linear-gradient(135deg,#0A1526 0%,#0C1B33 60%,#10284A 100%);--shadow:0 10px 40px rgba(0,0,0,.35)}
+*{box-sizing:border-box}
+html{overflow-x:clip;scroll-behavior:smooth;scroll-padding-top:80px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:400 18px/1.7 var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+::selection{background:var(--blue);color:#fff}
+a{color:inherit}
+p{margin:0;text-wrap:pretty}
+h1,h2,h3{margin:0;color:var(--navy);text-wrap:balance}
+svg{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:var(--gut)}
+.kicker{display:flex;align-items:center;gap:14px;color:var(--blue);font-weight:700;font-size:13.5px;letter-spacing:.16em;text-transform:uppercase}
+.kicker::before{content:"";flex:none;width:24px;height:2.5px;background:var(--blue);border-radius:2px}
+
+/* top bar */
+.top{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--line)}
+.top .wrap{height:60px;display:flex;align-items:center;gap:16px}
+.mark{display:flex;align-items:center;gap:10px;color:var(--navy);font-weight:600;font-size:14.5px;text-decoration:none;white-space:nowrap}
+.mark b{display:grid;place-items:center;width:26px;height:26px;border-radius:7px;background:var(--navy);color:var(--bg);font:700 11px/1 var(--sans)}
+.top nav{margin-left:auto;display:flex;align-items:center;gap:6px}
+.top nav a,.icon{display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 12px;border-radius:8px;color:var(--muted);font-size:14px;text-decoration:none;border:1px solid transparent;background:none;cursor:pointer;transition:color .2s,border-color .2s}
+.top nav a:hover,.icon:hover{color:var(--navy);border-color:var(--line)}
+.top svg{width:15px;height:15px}
+.icon{width:34px;padding:0;justify-content:center}
+.icon .moon,:root[data-theme="dark"] .icon .sun{display:none}
+:root[data-theme="dark"] .icon .moon{display:inline-flex}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .icon .sun{display:none}:root:not([data-theme="light"]) .icon .moon{display:inline-flex}}
+
+/* hero */
+.hero{background:var(--hero);border-bottom:1px solid var(--line);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);align-items:center;gap:24px;padding-block:clamp(48px,7vw,88px) clamp(96px,10vw,128px)}
+.hero h1{margin-top:22px;font-size:clamp(36px,5.4vw,64px);line-height:1.06;font-weight:800;letter-spacing:-.025em}
+.hero h1 span{color:var(--blue)}
+.dek{margin-top:22px;font-size:clamp(18px,1.9vw,22px);line-height:1.5;color:var(--text);max-width:36em}
+.byline{margin-top:26px;display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14.5px;color:var(--muted)}
+.byline b{color:var(--navy);font-weight:600}
+.art{position:relative;aspect-ratio:1.08;margin-right:-24px}
+.art img{width:100%;height:100%;object-fit:contain;-webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 58%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 58%,transparent 100%)}
+
+/* stats */
+.stats{position:relative;margin-top:-72px}
+.stats .grid{display:grid;grid-template-columns:repeat(var(--cols),minmax(0,1fr));background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);padding:28px 8px}
+.stat{padding:0 26px;border-left:1.5px solid var(--line)}
+.stat:first-child{border-left:0}
+.stat h3{font-size:14.5px;font-weight:700;line-height:1.35;min-height:2.7em}
+.stat .v{margin-top:8px;font-size:clamp(36px,4vw,50px);font-weight:800;color:var(--blue);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.stat .v small{font-size:.5em;font-weight:500;color:var(--blue-soft);letter-spacing:0;margin-left:4px}
+.stat p{margin-top:12px;font-size:14.5px;line-height:1.5;color:var(--muted)}
+
+/* body */
+.body{max-width:760px;margin:0 auto;padding:clamp(48px,7vw,80px) var(--gut) 24px}
+.body>p,.body section>p{margin-top:1.15em}
+.lead{font-size:clamp(20px,2.2vw,24px);line-height:1.55;color:var(--navy);font-weight:500;margin-top:0!important}
+.body section{margin-top:clamp(48px,6vw,72px)}
+.body h2{display:flex;align-items:baseline;gap:16px;font-size:clamp(19px,2vw,22px);line-height:1.3;font-weight:800;letter-spacing:.02em;text-transform:uppercase}
+.body h2 .n{flex:none;color:var(--blue);font-size:.82em;letter-spacing:.06em;font-variant-numeric:tabular-nums}
+.body h2+p{margin-top:18px}
+sup.ref{line-height:0;font-size:.62em;font-weight:700;margin-left:2px}
+sup.ref a{color:var(--blue);text-decoration:none;padding:0 2px}
+sup.ref a:hover{text-decoration:underline}
+.list{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:12px}
+.list li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:16px;align-items:start;padding:18px 20px;background:var(--surface);border:1px solid var(--line);border-radius:14px;font-size:16.5px;line-height:1.6}
+.list li svg{width:40px;height:40px;padding:9px;border-radius:50%;background:var(--tint);color:var(--blue)}
+.list b{display:block;color:var(--navy);font-weight:700;margin-bottom:2px}
+.key{display:grid;grid-template-columns:56px minmax(0,1fr);gap:22px;align-items:center;margin-top:clamp(48px,6vw,72px);padding:28px 32px;border-radius:20px;background:var(--bar);color:#fff}
+.key .a{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#3FC7F0,#2A9BE8)}
+.key .a svg{width:26px;height:26px;stroke-width:2.4}
+.key small{display:block;font-size:12.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;opacity:.85}
+.key p{margin-top:6px;font-size:clamp(19px,2vw,23px);line-height:1.4;font-weight:600}
+.strong{color:var(--navy);font-weight:700;font-size:1.08em;line-height:1.5}
+.strong.q{padding-left:22px;border-left:3px solid var(--blue)}
+.sources ol{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:10px;counter-reset:s}
+.sources li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:12px;font-size:15px;line-height:1.5;scroll-margin-top:90px}
+.sources li>span{display:grid;place-items:center;height:26px;border-radius:7px;background:var(--tint);color:var(--blue);font-weight:700;font-size:13px}
+.sources li:target>span{background:var(--blue);color:#fff}
+.sources a{display:inline-flex;align-items:center;gap:6px;margin-top:2px;color:var(--blue);font-size:14px;text-decoration:none}
+.sources a:hover{text-decoration:underline}
+.sources a svg{width:11px;height:11px}
+
+/* series */
+.series{max-width:760px;margin:0 auto;padding:40px var(--gut) 80px}
+.series .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:18px}
+.post{display:flex;flex-direction:column;gap:8px;padding:22px 24px;border-radius:16px;border:1px solid var(--line);background:var(--surface);text-decoration:none;transition:border-color .2s,transform .2s}
+.post:hover{border-color:var(--blue);transform:translateY(-2px)}
+.post small{color:var(--blue);font-weight:700;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase}
+.post b{color:var(--navy);font-size:18px;line-height:1.35}
+.post span{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:14px}
+.post svg{width:15px;height:15px}
+footer{border-top:1px solid var(--line);padding:28px 0;font-size:13.5px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:minmax(0,1fr)}
+  .art{order:-1;width:min(340px,70%);margin:0 auto -8px}
+  .stats .grid{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:28px}
+  .stat:nth-child(odd){border-left:0}
+}
+@media (max-width:560px){
+  body{font-size:17px}
+  .stats .grid{grid-template-columns:minmax(0,1fr);padding:8px 0}
+  .stat{border-left:0;border-top:1.5px solid var(--line);padding:22px 22px 0}
+  .stat:first-child{border-top:0}
+  .stat h3{min-height:0}
+  .key{grid-template-columns:minmax(0,1fr);padding:24px}
+  .list li{grid-template-columns:minmax(0,1fr)}
+  .top .mark span{display:none}
+}
+@media print{.top,.series,footer{display:none}.hero{background:none}body{background:#fff}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+</style>
+<script src="../article.js"></script>
+</head><body>
+<header class="top"><div class="wrap">
+  <a class="mark" href="../../"><b>MP</b><span>Miguel Peidro Paredes</span></a>
+  <nav aria-label="Artículo">
+    <a href="../../#writing"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5M11 6l-6 6 6 6"/></svg>Portfolio</a>
+    <button class="icon" id="theme" type="button" aria-label="Cambiar tema de color"><span class="sun"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1v1.5M8 13.5V15M1 8h1.5M13.5 8H15M3 3l1 1M12 12l1 1M3 13l1-1M12 4l1-1"/></svg></span><span class="moon"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 9.5A5.5 5.5 0 0 1 6.5 2.5a5.5 5.5 0 1 0 7 7z"/></svg></span></button>
+  </nav>
+</div></header>
+
+<header class="hero"><div class="wrap">
+  <div>
+    <p class="kicker">Artículo 1 de 2 · Ciberseguridad e IA</p>
+    <h1>España no puede dar por ganada la <span>ciberseguridad en la era de la IA</span></h1>
+    <p class="dek">Tenemos una base sólida. El riesgo es que la arquitectura de mañana quede fuera de la defensa de hoy.</p>
+    <p class="byline"><b>Miguel Peidro Paredes</b><span>Octubre 2026</span><span>5 min de lectura</span></p>
+  </div>
+  <div class="art"><img src="../img/espana-red.webp" alt="Mapa de España formado por una red de nodos luminosos" width="1100" height="1000"></div>
+</div></header>
+
+<section class="stats wrap" aria-label="Los datos"><div class="grid" style="--cols:4">
+  <div class="stat"><h3>Global Cybersecurity Index 2024 (UIT)</h3><div class="v">Tier 1</div><p>Nivel más alto, “Role-modelling”. La UIT publica niveles de madurez, no un puesto.<sup class="ref"><a href="#fuente-1" aria-label="Fuente 1">1</a></sup></p></div><div class="stat"><h3>Global Index for AI Safety 2025</h3><div class="v">24,3<small>/100</small></div><p>Puesto 26 de 40 en preparación para la seguridad de la IA.<sup class="ref"><a href="#fuente-2" aria-label="Fuente 2">2</a></sup></p></div><div class="stat"><h3>Global Index on Responsible AI 2026</h3><div class="v">12<small>/135</small></div><p>38,2 en IA en servicios públicos frente a 44,61 de media europea.<sup class="ref"><a href="#fuente-3" aria-label="Fuente 3">3</a></sup></p></div><div class="stat"><h3>INCIBE, balance 2025</h3><div class="v">122.223</div><p>Incidentes gestionados (+26 % vs. 2024) y 237.028 sistemas vulnerables detectados.<sup class="ref"><a href="#fuente-4" aria-label="Fuente 4">4</a></sup></p></div>
+</div></section>
+
+<article class="body">
+  <p class="lead">Me da rabia —una rabia que nace del orgullo profesional— pensar que España pueda erosionar una de sus fortalezas por no adaptar su estrategia de ciberseguridad a tiempo.</p>
+  <p>No partimos de cero. Tenemos instituciones, talento, experiencia y un marco de referencia como el Esquema Nacional de Seguridad (ENS). Pero la inteligencia artificial está cambiando la superficie que tenemos que proteger. Y una buena posición en ciberseguridad general no garantiza, por sí sola, preparación para este nuevo escenario.</p>
+  <section><h2><span class="n">01</span>TENEMOS UNA BASE QUE MERECE SER DEFENDIDA</h2><p>La UIT sitúa a España en el Tier 1 —“Role-modelling”— del Global Cybersecurity Index 2024, su nivel más alto. Es una señal de fortaleza en el compromiso y las capacidades nacionales evaluadas a través de cinco pilares: medidas legales, técnicas, organizativas, desarrollo de capacidades y cooperación internacional<sup class="ref"><a href="#fuente-1" aria-label="Fuente 1">1</a></sup>.</p><p>Una precisión importante: la UIT no publica en esa edición un puesto ordinal único que permita afirmar que España es “la sexta del mundo”. Publica niveles de madurez. Además, el índice mide compromiso y capacidad nacional, no la ausencia de brechas ni el grado de seguridad de cada empresa.</p><p>Precisamente por eso, no deberíamos conformarnos con conservar una buena fotografía de nuestro estado actual. Tenemos que llevar esa fortaleza a los sistemas que están emergiendo ahora.</p></section>
+  <section><h2><span class="n">02</span>LA PREPARACIÓN ESPECÍFICA PARA LA SEGURIDAD DE LA IA EXIGE OTRA MIRADA</h2><p>El Global Index for AI Safety de febrero de 2025 situó a España en el puesto 26 de 40 países, con 24,3 puntos sobre 100<sup class="ref"><a href="#fuente-2" aria-label="Fuente 2">2</a></sup>. El índice valora preparación nacional en seguridad de IA: gobernanza, instituciones, instrumentos, investigación, participación internacional y prevención de riesgos extremos.</p><p>El Global Index on Responsible AI 2026 ofrece una perspectiva distinta: España ocupa el puesto 12 de 135 jurisdicciones, con 63,27 puntos globales. Pero en la dimensión de uso de IA en servicios públicos obtiene 38,2 puntos, frente a una media europea de 44,61<sup class="ref"><a href="#fuente-3" aria-label="Fuente 3">3</a></sup>. Este índice se centra en gobernanza responsable de IA; no es un ranking de ciberseguridad.</p><p>No debemos mezclar estas puntuaciones como si midieran lo mismo ni concluir que un país está “protegido” o “desprotegido” por una sola cifra. La lectura útil es otra: la madurez general en ciberseguridad, la preparación para la seguridad de IA y la gobernanza responsable son dimensiones diferentes. Necesitamos rendir cuentas en las tres.</p></section>
+  <section><h2><span class="n">03</span>EL CONTEXTO DE EXPOSICIÓN YA ES EXIGENTE</h2><p>INCIBE gestionó 122.223 incidentes de ciberseguridad durante 2025, un 26 % más que en 2024, e identificó 237.028 sistemas vulnerables<sup class="ref"><a href="#fuente-4" aria-label="Fuente 4">4</a></sup>. Estas cifras describen el conjunto de la actividad de ciberseguridad en España; no significa que esos incidentes fueran causados por IA ni que todos los sistemas detectados fueran explotados.</p><p>A escala europea, ENISA concluye en su Threat Landscape 2026 que las dependencias digitales amplían la superficie de ataque. También observa que los modelos de IA están siendo utilizados para apoyar operaciones maliciosas y que los propios sistemas de IA empiezan a formar parte de los objetivos que los atacantes quieren explotar<sup class="ref"><a href="#fuente-5" aria-label="Fuente 5">5</a></sup>.</p><p>Cuando un modelo pasa de responder preguntas a consultar información corporativa, invocar APIs, utilizar herramientas o ejecutar acciones, aparecen nuevas fronteras de seguridad. El problema deja de ser únicamente “proteger un modelo”: incluye identidades, permisos, conectores, fuentes de datos, proveedores, memoria, registros y acciones posteriores.</p></section>
+  <section><h2><span class="n">04</span>EL ENS ES UNA BASE, NO UN PILOTO AUTOMÁTICO</h2><p>El ENS no está obsoleto por definición. El Real Decreto 311/2022 incorpora principios de vigilancia continua, reevaluación periódica y mejora continua del proceso de seguridad<sup class="ref"><a href="#fuente-6" aria-label="Fuente 6">6</a></sup>. Esa es una base valiosa.</p><p>El desafío está en aplicar esos principios de forma concreta a nuevos sistemas que combinan modelos probabilísticos, datos no confiables, herramientas externas y capacidad de actuación. Y hacerlo dentro de cada ámbito de aplicación correspondiente: el ENS tiene un ámbito normativo definido y no sustituye los marcos específicos que cada organización privada deba aplicar.</p><p>No basta con añadir “IA” a una política corporativa. Hay que inventariar cada caso de uso, entender sus permisos y dependencias, probar escenarios adversariales y reevaluar el riesgo cuando cambien el modelo, el prompt, las herramientas, los datos o el alcance de sus acciones.</p></section>
+  <section><h2><span class="n">05</span>QUÉ DEBERÍA SIGNIFICAR UNA ESTRATEGIA MÁS AMBICIOSA</h2><ul class="list"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 4 5.5v6c0 5 3.4 8.8 8 10 4.6-1.2 8-5 8-10v-6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><div><b>Inventariar la IA real</b>Modelos, agentes, herramientas, conectores, datos, identidades y procesos afectados; incluidos los despliegues que nacen fuera del catálogo central de IT.</div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 4 5.5v6c0 5 3.4 8.8 8 10 4.6-1.2 8-5 8-10v-6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><div><b>Diseñar límites de actuación</b>Mínimo privilegio, credenciales acotadas, separación de entornos, sandbox, restricciones de salida y aprobación humana para acciones de alto impacto.</div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 4 5.5v6c0 5 3.4 8.8 8 10 4.6-1.2 8-5 8-10v-6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><div><b>Evaluar de forma continua</b>Red teaming de IA, pruebas de inyección de instrucciones, escenarios de exfiltración, abuso de herramientas, manipulación de datos y fallos de la cadena de suministro.</div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 4 5.5v6c0 5 3.4 8.8 8 10 4.6-1.2 8-5 8-10v-6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><div><b>Instrumentar la operación</b>Trazabilidad de las decisiones y llamadas a herramientas, alertas, capacidad de detener al agente, rollback y respuesta a incidentes que incluya a los equipos de IA y ciberseguridad.</div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 4 5.5v6c0 5 3.4 8.8 8 10 4.6-1.2 8-5 8-10v-6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><div><b>Invertir en capacidades compartidas</b>Formación práctica, simulaciones realistas, compras seguras, intercambio de inteligencia y colaboración entre empresas, reguladores, universidades y organismos públicos.</div></li></ul></section>
+  <aside class="key"><span class="a"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span><div><small>Idea clave</small><p>No podemos ampliar nuestra superficie de ataque más rápido de lo que ampliamos nuestra capacidad de defenderla.</p></div></aside>
+  <section><h2>Conclusión</h2><p>España debería acelerar la integración real de la IA y, al mismo tiempo, apostar de forma decidida por protegerla. No hacerlo no solo aumenta el riesgo de incidentes aislados; puede convertir una fortaleza nacional en una ventaja que se erosiona mientras cambian las infraestructuras que sostienen nuestra economía.</p><p>Si conectamos agentes, datos y sistemas críticos sin revisar los límites, permisos y controles, nos exponemos a convertirnos en un objetivo valioso con puntos ciegos evitables.</p><p class="strong">Y eso significa que nos darán por todas partes.</p><p class="strong q">La pregunta no es si debemos apostar por la IA. Es si vamos a hacerlo con la ambición suficiente para competir y con la madurez necesaria para protegernos.</p><p>¿Estamos evolucionando nuestra estrategia de ciberseguridad a la velocidad con la que estamos incorporando IA?</p></section>
+  <section class="sources"><h2>Fuentes y lecturas recomendadas</h2><ol><li id="fuente-1"><span>1</span><div>Unión Internacional de Telecomunicaciones (UIT), Global Cybersecurity Index 2024<br><a href="https://www.itu.int/en/ITU-D/Cybersecurity/Pages/Global-Cybersecurity-Index.aspx" target="_blank" rel="noopener">itu.int<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a></div></li><li id="fuente-2"><span>2</span><div>AGILE Index, Global Index for AI Safety, febrero de 2025<br><a href="https://www.agile-index.ai/Global-Index-For-AI-Safety-Report-EN.pdf" target="_blank" rel="noopener">agile-index.ai<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a></div></li><li id="fuente-3"><span>3</span><div>Global Center on AI Governance, Global Index on Responsible AI 2026 (2.ª edición)<br><a href="https://www.global-index.ai/" target="_blank" rel="noopener">global-index.ai<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a></div></li><li id="fuente-4"><span>4</span><div>INCIBE, Balance de Ciberseguridad 2025<br><a href="https://www.incibe.es/sites/default/files/2026-02/Balance%20de%20ciberseguridad%202025%20INCIBE/BalanceCiberseguridad2025_INCIBE.pdf" target="_blank" rel="noopener">incibe.es<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a></div></li><li id="fuente-5"><span>5</span><div>ENISA, Threat Landscape 2026, comunicado de 22 de septiembre de 2026<br><a href="https://www.enisa.europa.eu/news/exploring-the-evolution-of-the-cyber-threat-landscape-how-dependencies-weaken-our-digital-resilience" target="_blank" rel="noopener">enisa.europa.eu<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a></div></li><li id="fuente-6"><span>6</span><div>BOE, Real Decreto 311/2022, Esquema Nacional de Seguridad<br><a href="https://www.boe.es/eli/es/rd/2022/05/03/311/con" target="_blank" rel="noopener">boe.es<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a></div></li></ol></section>
+</article>
+
+<nav class="series" aria-label="Serie"><p class="kicker">Serie · Ciberseguridad e IA</p><div class="grid">
+  <a class="post" href="../probar-agentes-ia/"><small>Artículo 2 de 2</small><b>No se puede proteger un agente de IA que nunca se ha probado de verdad</b><span>Leer <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span></a>
+  <a class="post" href="../../"><small>Autor</small><b>Miguel Peidro Paredes</b><span>Ver portfolio <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span></a>
+</div></nav>
+
+<footer><div class="wrap"><span>© 2026 Miguel Peidro Paredes</span><span>Publicado también en LinkedIn</span></div></footer>
+</body></html>

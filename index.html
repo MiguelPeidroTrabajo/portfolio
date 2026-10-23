@@ -7,8 +7,8 @@
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#FAFAF9" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#0B0B0C" media="(prefers-color-scheme: dark)">
 <title>Miguel Peidro Paredes · Security architect for generative AI</title>
-<meta name="description" content="Miguel Peidro Paredes. Security architect for generative AI at BBVA Corporate &amp; Investment Banking, Madrid.">
-<meta property="og:type" content="profile"><meta property="og:title" content="Miguel Peidro Paredes"><meta property="og:description" content="Miguel Peidro Paredes. Security architect for generative AI at BBVA Corporate &amp; Investment Banking, Madrid.">
+<meta name="description" content="Miguel Peidro Paredes. Security architect for generative AI at BBVA Corporate &amp; Investment Banking (external contractor, Nfoque Advisory Services), Madrid.">
+<meta property="og:type" content="profile"><meta property="og:title" content="Miguel Peidro Paredes"><meta property="og:description" content="Miguel Peidro Paredes. Security architect for generative AI at BBVA Corporate &amp; Investment Banking (external contractor, Nfoque Advisory Services), Madrid.">
 <meta property="og:url" content="https://miguelpeidrotrabajo.github.io/portfolio/"><meta property="og:image" content="https://miguelpeidrotrabajo.github.io/portfolio/photo.jpg"><link rel="canonical" href="https://miguelpeidrotrabajo.github.io/portfolio/">
 <link rel="icon" type="image/png" href="favicon-light.png" media="(prefers-color-scheme: light)">
 <link rel="icon" type="image/png" href="favicon-dark.png" media="(prefers-color-scheme: dark)">
@@ -205,6 +205,11 @@ svg{fill:none;stroke:currentColor;stroke-width:1.3;stroke-linecap:round;stroke-l
 .card .k{color:var(--faint)}
 .card h3{margin-top:10px;font-size:19px;letter-spacing:-.02em}
 .card p{margin-top:10px;font-size:15px}
+.writing{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.card.post{padding-top:0;overflow:hidden;transition:border-color .2s,transform .2s}
+.card.post:hover{border-color:var(--accent);transform:translateY(-2px)}
+.card.post .thumb{display:block;height:150px;margin:0 -26px 20px;background:linear-gradient(135deg,#F7FAFF,#DFEAF8);border-bottom:1px solid var(--line)}
+.card.post .thumb img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
 .matrix{margin-top:24px;display:grid;grid-template-columns:repeat(35,minmax(0,1fr));gap:4px}
 .matrix i{aspect-ratio:1;border-radius:50%;background:var(--ink);opacity:.8;transition:opacity .3s,transform .3s}
 .matrix i:nth-child(7n+3),.matrix i:nth-child(11n+5){opacity:.5}
@@ -273,7 +278,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   .res:nth-child(odd){border-right:0}
   .facts,.contact .meta{grid-template-columns:1fr}
   .facts>div+div,.contact .meta>div+div{padding-left:0;border-left:0;border-top:1px solid var(--line);margin-top:14px}
-  .proj,.edu{grid-template-columns:1fr}
+  .proj,.edu,.writing{grid-template-columns:1fr}
   .matrix{gap:3px}
   .table th:nth-child(3),.table td:nth-child(3){display:none}
   .mark span{display:none}
@@ -297,7 +302,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="wrap">
     <a class="mark" href="#top" aria-label="Back to top"><b>MP</b><span>Miguel Peidro Paredes</span></a>
     <nav class="links" aria-label="Sections">
-      <a href="#results">Results</a><a href="#timeline">Timeline</a><a href="#research">Research</a><a href="#projects">Projects</a><a href="#learning">Learning</a><a href="#contact">Contact</a>
+      <a href="#results">Results</a><a href="#timeline">Timeline</a><a href="#research">Research</a><a href="#writing">Writing</a><a href="#projects">Projects</a><a href="#learning">Learning</a><a href="#contact">Contact</a>
       <span class="bar" aria-hidden="true"></span>
     </nav>
     <div class="tools">
@@ -311,8 +316,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="wrap">
     <section class="hero">
       <div>
-        <h1>Miguel Peidro Paredes. <span>Security architect for generative AI at BBVA.</span></h1>
-        <p class="sub">Since the bank's first AI project, I have worked on the security of its generative AI systems in Corporate &amp; Investment Banking: security-by-design, risk assessment and audit on AWS and Azure. Before that, research on adversarial generative models at UC3M and a DeFi company I co-founded at 21.</p>
+        <h1>Miguel Peidro Paredes. <span>Security architect for generative AI at BBVA, via Nfoque.</span></h1>
+        <p class="sub">Since the bank's first AI project, I have worked as an external contractor, engaged through Nfoque Advisory Services, on the security of its generative AI systems in Corporate &amp; Investment Banking: security-by-design, risk assessment and audit on AWS and Azure. Before that, research on adversarial generative models at UC3M and a DeFi company I co-founded at 21.</p>
         <div class="cta">
           <a class="btn solid" href="#contact">Get in touch</a>
           <a class="btn" href="cv.pdf" target="_blank" rel="noopener">One-page CV <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a>
@@ -352,7 +357,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
             </div>
             <div class="tl-group mono">Work</div>
             <button class="tl-row work" type="button" aria-pressed="true" aria-controls="card-bbva" data-id="bbva">
-  <span class="lab"><span class="role">AI Security Architect &amp; IT Security Auditor</span><span class="org">BBVA · Corporate &amp; Investment Banking</span></span>
+  <span class="lab"><span class="role">AI Security Architect &amp; IT Security Auditor</span><span class="org">BBVA CIB · external contractor (Nfoque)</span></span>
   <span class="track" aria-hidden="true"><span class="bar now" style="left:73.48%;width:24.05%"></span></span>
 </button><button class="tl-row work" type="button" aria-pressed="false" aria-controls="card-uc3m" data-id="uc3m">
   <span class="lab"><span class="role">AI Researcher &amp; Engineer · Guest Lecturer</span><span class="org">Universidad Carlos III de Madrid</span></span>
@@ -386,11 +391,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           <article class="tl-card work" id="card-bbva" data-id="bbva">
   <div class="tc-top"><span class="kind mono"><i></i>Work</span><button class="tc-x" type="button" data-close="bbva" aria-label="Close AI Security Architect &amp; IT Security Auditor">×</button></div>
   <h3>AI Security Architect &amp; IT Security Auditor</h3>
-  <p class="tc-org">BBVA · Corporate &amp; Investment Banking, via Nfoque Advisory Services</p>
+  <p class="tc-org">BBVA · Corporate &amp; Investment Banking, external contractor via Nfoque Advisory Services</p>
   <div class="tc-when"><span class="mono">2024–now · Madrid</span></div>
   <div class="mini" aria-hidden="true"><span class="mini-band" style="left:71.21%;width:7.58%"></span><span class="bar" style="left:73.48%;width:24.05%"></span></div>
   <div class="mini-ax mono" aria-hidden="true"><span>2016</span><span>2026</span></div>
-  <ul><li>Security-by-design, risk assessment and architecture review for generative AI systems on AWS and Azure, from the bank's first AI project onwards.</li><li>Internal automations in daily use across CIB teams, saving an estimated 100,000 hours of work per year.</li><li>Security audits and mitigation plans for new AI services and legacy systems, covering digital operational resilience (DORA).</li></ul>
+  <ul><li>As an external contractor engaged through Nfoque Advisory Services: security-by-design, risk assessment and architecture review for generative AI systems on AWS and Azure, from the bank's first AI project onwards.</li><li>Internal automations in daily use across CIB teams, saving an estimated 100,000 hours of work per year.</li><li>Security audits and mitigation plans for new AI services and legacy systems, covering digital operational resilience (DORA).</li></ul>
 </article><article class="tl-card work" id="card-uc3m" data-id="uc3m" hidden>
   <div class="tc-top"><span class="kind mono"><i></i>Work</span><button class="tc-x" type="button" data-close="uc3m" aria-label="Close AI Researcher &amp; Engineer · Guest Lecturer">×</button></div>
   <h3>AI Researcher &amp; Engineer · Guest Lecturer</h3>
@@ -479,6 +484,21 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           <div><dt>Master's thesis</dt><dd>Analytics for Advanced Persistent Threats<span>Using geopolitical event data (GDELT). UC3M, 2021.</span></dd></div>
         </dl>
       </div>
+    </section>
+
+    <section class="sec" id="writing">
+      <div class="sec-head"><h2>Writing<a class="anchor" href="#writing" aria-label="Link to Writing">#</a></h2><p>A two-part series on AI security in Spain, in Spanish.</p></div>
+      <div class="writing"><a class="card post" href="articulos/espana-ciberseguridad-ia/" hreflang="es">
+  <span class="thumb"><img src="articulos/img/espana-red.webp" alt="" width="1100" height="1000" loading="lazy"></span>
+  <span class="k mono">Article 1 of 2 · Spanish · 5 min</span>
+  <h3>España no puede dar por ganada la ciberseguridad en la era de la IA</h3>
+  <p>Tenemos una base sólida. El riesgo es que la arquitectura de mañana quede fuera de la defensa de hoy.</p>
+</a><a class="card post" href="articulos/probar-agentes-ia/" hreflang="es">
+  <span class="thumb"><img src="articulos/img/agente-red.webp" alt="" width="1100" height="1000" loading="lazy"></span>
+  <span class="k mono">Article 2 of 2 · Spanish · 5 min</span>
+  <h3>No se puede proteger un agente de IA que nunca se ha probado de verdad</h3>
+  <p>La brecha crítica no es entre seguridad e innovación: es entre lo que estos sistemas pueden hacer y lo que los equipos entienden de ellos.</p>
+</a></div>
     </section>
 
     <section class="sec" id="projects">

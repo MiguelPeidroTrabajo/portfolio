@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="es"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F4F8FD" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#08111F" media="(prefers-color-scheme: dark)">
+<title>No se puede proteger un agente de IA que nunca se ha probado de verdad · Miguel Peidro Paredes</title>
+<meta name="description" content="La brecha crítica no es entre seguridad e innovación: es entre lo que estos sistemas pueden hacer y lo que los equipos entienden de ellos.">
+<meta name="author" content="Miguel Peidro Paredes">
+<meta property="og:type" content="article"><meta property="og:locale" content="es_ES">
+<meta property="og:title" content="No se puede proteger un agente de IA que nunca se ha probado de verdad"><meta property="og:description" content="La brecha crítica no es entre seguridad e innovación: es entre lo que estos sistemas pueden hacer y lo que los equipos entienden de ellos.">
+<meta property="og:url" content="https://miguelpeidrotrabajo.github.io/portfolio/articulos/probar-agentes-ia/"><meta property="og:image" content="https://miguelpeidrotrabajo.github.io/portfolio/articulos/img/og-probar-agentes-ia.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://miguelpeidrotrabajo.github.io/portfolio/articulos/probar-agentes-ia/">
+<link rel="icon" type="image/png" href="../../favicon-light.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../../favicon-dark.png" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+:root{
+  --bg:#F4F8FD;--surface:#FFFFFF;--navy:#0B1F3A;--text:#3A4A60;--muted:#5D6B80;--blue:#1A73E8;--blue-soft:#8FB6EC;
+  --line:#D5E2F3;--tint:#E7F0FC;--hero:linear-gradient(135deg,#F7FAFF 0%,#EEF4FC 55%,#DFEAF8 100%);
+  --bar:linear-gradient(90deg,#1565D8,#1E88E5);--shadow:0 10px 40px rgba(20,70,140,.08);
+  --sans:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;--gut:clamp(16px,4vw,40px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;
+  --bg:#08111F;--surface:#0F1B2E;--navy:#EAF1FB;--text:#B7C4D6;--muted:#8796AB;--blue:#5AA2FF;--blue-soft:#4D78B0;
+  --line:#1D2C44;--tint:#10213A;--hero:linear-gradient(135deg,#0A1526 0%,#0C1B33 60%,#10284A 100%);--shadow:0 10px 40px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{color-scheme:dark;
+  --bg:#08111F;--surface:#0F1B2E;--navy:#EAF1FB;--text:#B7C4D6;--muted:#8796AB;--blue:#5AA2FF;--blue-soft:#4D78B0;
+  --line:#1D2C44;--tint:#10213A;--hero:linear-gradient(135deg,#0A1526 0%,#0C1B33 60%,#10284A 100%);--shadow:0 10px 40px rgba(0,0,0,.35)}
+*{box-sizing:border-box}
+html{overflow-x:clip;scroll-behavior:smooth;scroll-padding-top:80px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:400 18px/1.7 var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+::selection{background:var(--blue);color:#fff}
+a{color:inherit}
+p{margin:0;text-wrap:pretty}
+h1,h2,h3{margin:0;color:var(--navy);text-wrap:balance}
+svg{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:var(--gut)}
+.kicker{display:flex;align-items:center;gap:14px;color:var(--blue);font-weight:700;font-size:13.5px;letter-spacing:.16em;text-transform:uppercase}
+.kicker::before{content:"";flex:none;width:24px;height:2.5px;background:var(--blue);border-radius:2px}
+
+/* top bar */
+.top{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--line)}
+.top .wrap{height:60px;display:flex;align-items:center;gap:16px}
+.mark{display:flex;align-items:center;gap:10px;color:var(--navy);font-weight:600;font-size:14.5px;text-decoration:none;white-space:nowrap}
+.mark b{display:grid;place-items:center;width:26px;height:26px;border-radius:7px;background:var(--navy);color:var(--bg);font:700 11px/1 var(--sans)}
+.top nav{margin-left:auto;display:flex;align-items:center;gap:6px}
+.top nav a,.icon{display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 12px;border-radius:8px;color:var(--muted);font-size:14px;text-decoration:none;border:1px solid transparent;background:none;cursor:pointer;transition:color .2s,border-color .2s}
+.top nav a:hover,.icon:hover{color:var(--navy);border-color:var(--line)}
+.top svg{width:15px;height:15px}
+.icon{width:34px;padding:0;justify-content:center}
+.icon .moon,:root[data-theme="dark"] .icon .sun{display:none}
+:root[data-theme="dark"] .icon .moon{display:inline-flex}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .icon .sun{display:none}:root:not([data-theme="light"]) .icon .moon{display:inline-flex}}
+
+/* hero */
+.hero{background:var(--hero);border-bottom:1px solid var(--line);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);align-items:center;gap:24px;padding-block:clamp(48px,7vw,88px) clamp(96px,10vw,128px)}
+.hero h1{margin-top:22px;font-size:clamp(36px,5.4vw,64px);line-height:1.06;font-weight:800;letter-spacing:-.025em}
+.hero h1 span{color:var(--blue)}
+.dek{margin-top:22px;font-size:clamp(18px,1.9vw,22px);line-height:1.5;color:var(--text);max-width:36em}
+.byline{margin-top:26px;display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14.5px;color:var(--muted)}
+.byline b{color:var(--navy);font-weight:600}
+.art{position:relative;aspect-ratio:1.08;margin-right:-24px}
+.art img{width:100%;height:100%;object-fit:contain;-webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 58%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 58%,transparent 100%)}
+
+/* stats */
+.stats{position:relative;margin-top:-72px}
+.stats .grid{display:grid;grid-template-columns:repeat(var(--cols),minmax(0,1fr));background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);padding:28px 8px}
+.stat{padding:0 26px;border-left:1.5px solid var(--line)}
+.stat:first-child{border-left:0}
+.stat h3{font-size:14.5px;font-weight:700;line-height:1.35;min-height:2.7em}
+.stat .v{margin-top:8px;font-size:clamp(36px,4vw,50px);font-weight:800;color:var(--blue);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.stat .v small{font-size:.5em;font-weight:500;color:var(--blue-soft);letter-spacing:0;margin-left:4px}
+.stat p{margin-top:12px;font-size:14.5px;line-height:1.5;color:var(--muted)}
+
+/* body */
+.body{max-width:760px;margin:0 auto;padding:clamp(48px,7vw,80px) var(--gut) 24px}
+.body>p,.body section>p{margin-top:1.15em}
+.lead{font-size:clamp(20px,2.2vw,24px);line-height:1.55;color:var(--navy);font-weight:500;margin-top:0!important}
+.body section{margin-top:clamp(48px,6vw,72px)}
+.body h2{display:flex;align-items:baseline;gap:16px;font-size:clamp(19px,2vw,22px);line-height:1.3;font-weight:800;letter-spacing:.02em;text-transform:uppercase}
+.body h2 .n{flex:none;color:var(--blue);font-size:.82em;letter-spacing:.06em;font-variant-numeric:tabular-nums}
+.body h2+p{margin-top:18px}
+sup.ref{line-height:0;font-size:.62em;font-weight:700;margin-left:2px}
+sup.ref a{color:var(--blue);text-decoration:none;padding:0 2px}
+sup.ref a:hover{text-decoration:underline}
+.list{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:12px}
+.list li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:16px;align-items:start;padding:18px 20px;background:var(--surface);border:1px solid var(--line);border-radius:14px;font-size:16.5px;line-height:1.6}
+.list li svg{width:40px;height:40px;padding:9px;border-radius:50%;background:var(--tint);color:var(--blue)}
+.list b{display:block;color:var(--navy);font-weight:700;margin-bottom:2px}
+.key{display:grid;grid-template-columns:56px minmax(0,1fr);gap:22px;align-items:center;margin-top:clamp(48px,6vw,72px);padding:28px 32px;border-radius:20px;background:var(--bar);color:#fff}
+.key .a{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#3FC7F0,#2A9BE8)}
+.key .a svg{width:26px;height:26px;stroke-width:2.4}
+.key small{display:block;font-size:12.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;opacity:.85}
+.key p{margin-top:6px;font-size:clamp(19px,2vw,23px);line-height:1.4;font-weight:600}
+.strong{color:var(--navy);font-weight:700;font-size:1.08em;line-height:1.5}
+.strong.q{padding-left:22px;border-left:3px solid var(--blue)}
+.sources ol{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:10px;counter-reset:s}
+.sources li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:12px;font-size:15px;line-height:1.5;scroll-margin-top:90px}
+.sources li>span{display:grid;place-items:center;height:26px;border-radius:7px;background:var(--tint);color:var(--blue);font-weight:700;font-size:13px}
+.sources li:target>span{background:var(--blue);color:#fff}
+.sources a{display:inline-flex;align-items:center;gap:6px;margin-top:2px;color:var(--blue);font-size:14px;text-decoration:none}
+.sources a:hover{text-decoration:underline}
+.sources a svg{width:11px;height:11px}
+
+/* series */
+.series{max-width:760px;margin:0 auto;padding:40px var(--gut) 80px}
+.series .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:18px}
+.post{display:flex;flex-direction:column;gap:8px;padding:22px 24px;border-radius:16px;border:1px solid var(--line);background:var(--surface);text-decoration:none;transition:border-color .2s,transform .2s}
+.post:hover{border-color:var(--blue);transform:translateY(-2px)}
+.post small{color:var(--blue);font-weight:700;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase}
+.post b{color:var(--navy);font-size:18px;line-height:1.35}
+.post span{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:14px}
+.post svg{width:15px;height:15px}
+footer{border-top:1px solid var(--line);padding:28px 0;font-size:13.5px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:minmax(0,1fr)}
+  .art{order:-1;width:min(340px,70%);margin:0 auto -8px}
+  .stats .grid{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:28px}
+  .stat:nth-child(odd){border-left:0}
+}
+@media (max-width:560px){
+  body{font-size:17px}
+  .stats .grid{grid-template-columns:minmax(0,1fr);padding:8px 0}
+  .stat{border-left:0;border-top:1.5px solid var(--line);padding:22px 22px 0}
+  .stat:first-child{border-top:0}
+  .stat h3{min-height:0}
+  .key{grid-template-columns:minmax(0,1fr);padding:24px}
+  .list li{grid-template-columns:minmax(0,1fr)}
+  .top .mark span{display:none}
+}
+@media print{.top,.series,footer{display:none}.hero{background:none}body{background:#fff}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+</style>
+<script src="../article.js"></script>
+</head><body>
+<header class="top"><div class="wrap">
+  <a class="mark" href="../../"><b>MP</b><span>Miguel Peidro Paredes</span></a>
+  <nav aria-label="Artículo">
+    <a href="../../#writing"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5M11 6l-6 6 6 6"/></svg>Portfolio</a>
+    <button class="icon" id="theme" type="button" aria-label="Cambiar tema de color"><span class="sun"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1v1.5M8 13.5V15M1 8h1.5M13.5 8H15M3 3l1 1M12 12l1 1M3 13l1-1M12 4l1-1"/></svg></span><span class="moon"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 9.5A5.5 5.5 0 0 1 6.5 2.5a5.5 5.5 0 1 0 7 7z"/></svg></span></button>
+  </nav>
+</div></header>
+
+<header class="hero"><div class="wrap">
+  <div>
+    <p class="kicker">Artículo 2 de 2 · Ciberseguridad e IA</p>
+    <h1>No se puede proteger un <span>agente de IA</span> que nunca se ha probado de verdad</h1>
+    <p class="dek">La brecha crítica no es entre seguridad e innovación: es entre lo que estos sistemas pueden hacer y lo que los equipos entienden de ellos.</p>
+    <p class="byline"><b>Miguel Peidro Paredes</b><span>Octubre 2026</span><span>5 min de lectura</span></p>
+  </div>
+  <div class="art"><img src="../img/agente-red.webp" alt="Núcleo de IA conectado a nube, datos, código, web, identidad y seguridad" width="1100" height="1000"></div>
+</div></header>
+
+<section class="stats wrap" aria-label="Los datos"><div class="grid" style="--cols:3">
+  <div class="stat"><h3>International AI Safety Report 2026</h3><div class="v">77<small>%</small></div><p>De las vulnerabilidades de software real que identificó un agente en una competición.<sup class="ref"><a href="#fuente-1" aria-label="Fuente 1">1</a></sup></p></div><div class="stat"><h3>Misma competición</h3><div class="v">Top 5<small>%</small></div><p>Entre más de 400 equipos, mayoritariamente humanos.<sup class="ref"><a href="#fuente-1" aria-label="Fuente 1">1</a></sup></p></div><div class="stat"><h3>OWASP GenAI Security Project</h3><div class="v">Top 10</div><p>Riesgos específicos para aplicaciones agénticas, edición 2026.<sup class="ref"><a href="#fuente-3" aria-label="Fuente 3">3</a></sup></p></div>
+</div></section>
+
+<article class="body">
+  <p class="lead">Después de conocer por dentro la implantación de IA en grandes empresas españolas, hay una reflexión que me parece imprescindible: necesitamos hacer un ejercicio de humildad.</p>
+  <p>En mi experiencia, he encontrado una asimetría preocupante: organizaciones que empiezan a conectar modelos con herramientas, datos y flujos de trabajo, mientras parte de los equipos responsables de protegerlos todavía no ha experimentado en profundidad con sistemas agénticos. No es una crítica a la capacidad de los profesionales de ciberseguridad; es una llamada a cerrar una brecha de aprendizaje que la velocidad tecnológica está abriendo.</p>
+  <section><h2><span class="n">01</span>UN AGENTE NO ES SIMPLEMENTE UN CHATBOT</h2><p>Un chatbot normalmente produce una respuesta. Un agente puede planificar pasos, consultar fuentes, invocar herramientas, usar APIs, delegar tareas y modificar el estado de un sistema. Su utilidad empresarial nace, en parte, de esa capacidad de actuar. Y esa misma capacidad amplía lo que puede salir mal.</p><p>Si el agente tiene acceso a CRM, correo, repositorios, tickets, herramientas de desarrollo o sistemas internos, el modelo de amenazas debe cubrir mucho más que el texto que genera. Hay que entender qué identidad utiliza, qué secretos puede ver, qué acciones tiene permitidas, qué fuentes considera confiables, qué registra y cuándo necesita autorización humana.</p><p>La seguridad pasa a depender del modelo y su contexto, pero también de la orquestación, los conectores, el entorno de ejecución, los permisos, la cadena de suministro y los controles alrededor de cada acción.</p></section>
+  <section><h2><span class="n">02</span>LA SUPERFICIE DE ATAQUE DEJA DE SER TEÓRICA</h2><ul class="list"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 4 5.5v6c0 5 3.4 8.8 8 10 4.6-1.2 8-5 8-10v-6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><div><b>Inyección de instrucciones</b>Un documento, correo, página web o fuente recuperada por RAG puede contener instrucciones maliciosas que intenten desviar el comportamiento del agente.</div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 4 5.5v6c0 5 3.4 8.8 8 10 4.6-1.2 8-5 8-10v-6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><div><b>Uso indebido de herramientas</b>Una API legítima puede convertirse en una vía para consultar, modificar, borrar o enviar datos fuera del objetivo previsto si los permisos son demasiado amplios.</div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 4 5.5v6c0 5 3.4 8.8 8 10 4.6-1.2 8-5 8-10v-6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><div><b>Exposición de datos y secretos</b>Un agente puede revelar información sensible a través de una respuesta, una llamada a una herramienta o una cadena de pasos no prevista.</div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 4 5.5v6c0 5 3.4 8.8 8 10 4.6-1.2 8-5 8-10v-6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><div><b>Identidades y privilegios</b>Tokens duraderos, cuentas compartidas, permisos de administrador o ausencia de separación por tarea aumentan el impacto potencial de un fallo.</div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 4 5.5v6c0 5 3.4 8.8 8 10 4.6-1.2 8-5 8-10v-6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><div><b>Memoria y coordinación</b>El contexto persistente, las instrucciones guardadas, los hand-offs y la interacción entre agentes pueden propagar contenido malicioso o confianza indebida.</div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 4 5.5v6c0 5 3.4 8.8 8 10 4.6-1.2 8-5 8-10v-6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><div><b>Dependencias y cadena de suministro</b>Modelos, paquetes, plugins, conectores, servidores MCP, configuraciones y proveedores añaden piezas que deben inventariarse, verificarse y monitorizarse.</div></li></ul></section>
+  <section><h2><span class="n">03</span>LOS DATOS RECIENTES JUSTIFICAN TOMARSE EN SERIO EL CAMBIO</h2><p>El International AI Safety Report 2026 concluye que hay evidencia de grupos criminales y actores estatales que ya utilizan IA en operaciones cibernéticas. También advierte que todavía es difícil demostrar cuánto ha aumentado la escala o gravedad global de los ataques por causa directa de la IA; conviene no convertir la tendencia en una afirmación que la evidencia aún no respalda<sup class="ref"><a href="#fuente-1" aria-label="Fuente 1">1</a></sup>.</p><p>El informe recoge un ejemplo de capacidad: en una competición relevante de ciberseguridad, un agente identificó el 77 % de las vulnerabilidades presentes en software real y quedó dentro del 5 % superior de más de 400 equipos, mayoritariamente humanos. No es una medida de éxito en todos los entornos. De hecho, el informe no registra ataques plenamente autónomos de extremo a extremo: describe una automatización creciente de partes de la cadena, con intervención humana en puntos críticos<sup class="ref"><a href="#fuente-1" aria-label="Fuente 1">1</a></sup>.</p><p>ENISA, por su parte, señala que los sistemas de IA ya son tanto herramientas potenciales para actores maliciosos como objetivos de explotación, y que las dependencias digitales amplían la superficie de ataque<sup class="ref"><a href="#fuente-2" aria-label="Fuente 2">2</a></sup>. OWASP dispone de un Top 10 específico para aplicaciones agénticas de 2026, señal de que el problema requiere controles y modelos de amenaza adaptados, no solo una extensión cosmética de las listas tradicionales<sup class="ref"><a href="#fuente-3" aria-label="Fuente 3">3</a></sup>.</p></section>
+  <section><h2><span class="n">04</span>QUÉ SIGNIFICA “PROBAR DE VERDAD” ANTES DE PRODUCCIÓN</h2><ul class="list"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 4 5.5v6c0 5 3.4 8.8 8 10 4.6-1.2 8-5 8-10v-6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><div><b>Probar con herramientas reales en un entorno aislado</b>Mismas clases de permisos, datos sintéticos realistas, APIs simuladas y límites de impacto.</div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 4 5.5v6c0 5 3.4 8.8 8 10 4.6-1.2 8-5 8-10v-6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><div><b>Atacar las fuentes de contexto</b>Documentos, emails, tickets y páginas web con instrucciones maliciosas, tratando el contenido externo como dato no confiable.</div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 4 5.5v6c0 5 3.4 8.8 8 10 4.6-1.2 8-5 8-10v-6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><div><b>Validar cada capacidad</b>Lectura, escritura, envío, ejecución, delegación y acceso a secretos; no basta con evaluar la calidad de la respuesta del modelo.</div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 4 5.5v6c0 5 3.4 8.8 8 10 4.6-1.2 8-5 8-10v-6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><div><b>Comprobar las fronteras de identidad</b>Permisos mínimos por agente y por tarea, credenciales efímeras cuando proceda, separación de usuarios y ausencia de secretos innecesarios.</div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 4 5.5v6c0 5 3.4 8.8 8 10 4.6-1.2 8-5 8-10v-6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><div><b>Registrar las acciones de extremo a extremo</b>Prompt/contexto relevante, decisión, herramienta llamada, parámetros, resultado, identidad, aprobaciones y errores, respetando privacidad y normativa.</div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 4 5.5v6c0 5 3.4 8.8 8 10 4.6-1.2 8-5 8-10v-6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><div><b>Ensayar contención y recuperación</b>Detener al agente, revocar credenciales, cancelar tareas, aislar conectores, preservar evidencias y volver a un estado seguro.</div></li></ul></section>
+  <section><h2><span class="n">05</span>LA COLABORACIÓN QUE NECESITAMOS</h2><p>Los equipos de ciberseguridad deben tener acceso a laboratorios donde puedan desplegar y atacar agentes con profundidad, no limitarse a revisar presentaciones o aceptar una evaluación del proveedor como evidencia suficiente. A la vez, los equipos de IA deben comprender identidad, mínimo privilegio, gestión de secretos, threat modeling, logging, respuesta a incidentes y diseño seguro.</p><p>Los líderes de negocio también tienen una responsabilidad: exigir un caso de uso claro, dueño operativo, perímetro de datos, nivel de autonomía definido, límites para acciones críticas y criterios explícitos de aceptación del riesgo. La seguridad agéntica no se resuelve con una única herramienta ni con un prompt de sistema que diga “sé seguro”.</p><p>El enfoque adecuado combina pruebas adversariales antes y después del despliegue, monitorización en tiempo de ejecución, permisos acotados y reevaluación cuando cambie el modelo, las herramientas o el contexto. El objetivo no es prometer riesgo cero; es reducir el riesgo, detectar fallos con rapidez y limitar su impacto.</p></section>
+  <aside class="key"><span class="a"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span><div><small>Idea clave</small><p>No podemos proteger de verdad una tecnología que solo conocemos a través de demostraciones. Tenemos que utilizarla, ponerla a prueba y entender dónde puede fallar.</p></div></aside>
+  <section><h2>Conclusión</h2><p>La respuesta no es frenar la adopción. Es acelerar el aprendizaje, la experimentación y la capacidad defensiva a la vez.</p><p>Necesitamos profesionales de ciberseguridad que comprendan profundamente cómo funcionan los agentes, y profesionales de IA que entiendan que conectar un modelo a herramientas y datos corporativos transforma el problema de seguridad.</p><p class="strong q">La cuestión no es cuántas organizaciones han desplegado un piloto de IA. Es cuántas han probado los agentes que van a producción con los permisos, los datos y las herramientas que tendrán en el mundo real.</p><p class="strong q">¿Cuántos de nuestros equipos de seguridad han intentado romper el sistema antes de que lo haga alguien desde fuera?</p><p>La seguridad de la IA debe formar parte de su diseño y de su operación, no llegar como una revisión final.</p></section>
+  <section class="sources"><h2>Fuentes y lecturas recomendadas</h2><ol><li id="fuente-1"><span>1</span><div>International AI Safety Report 2026 — capacidades y riesgos cibernéticos<br><a href="https://internationalaisafetyreport.org/publication/international-ai-safety-report-2026" target="_blank" rel="noopener">internationalaisafetyreport.org<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a></div></li><li id="fuente-2"><span>2</span><div>ENISA, Threat Landscape 2026, 22 de septiembre de 2026<br><a href="https://www.enisa.europa.eu/news/exploring-the-evolution-of-the-cyber-threat-landscape-how-dependencies-weaken-our-digital-resilience" target="_blank" rel="noopener">enisa.europa.eu<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a></div></li><li id="fuente-3"><span>3</span><div>OWASP GenAI Security Project, Top 10 for Agentic Applications 2026<br><a href="https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/" target="_blank" rel="noopener">genai.owasp.org<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a></div></li><li id="fuente-4"><span>4</span><div>OWASP GenAI Security Project, Agent Control Standard (ACS), septiembre de 2026<br><a href="https://genai.owasp.org/2026/09/01/owasp-genai-security-project-unveils-2026-top-10-for-llm-applications-new-agent-control-standard-and-sponsors-as-community-tops-30000-members/" target="_blank" rel="noopener">genai.owasp.org<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a></div></li><li id="fuente-5"><span>5</span><div>INCIBE, Balance de Ciberseguridad 2025<br><a href="https://www.incibe.es/sites/default/files/2026-02/Balance%20de%20ciberseguridad%202025%20INCIBE/BalanceCiberseguridad2025_INCIBE.pdf" target="_blank" rel="noopener">incibe.es<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a></div></li></ol></section>
+</article>
+
+<nav class="series" aria-label="Serie"><p class="kicker">Serie · Ciberseguridad e IA</p><div class="grid">
+  <a class="post" href="../espana-ciberseguridad-ia/"><small>Artículo 1 de 2</small><b>España no puede dar por ganada la ciberseguridad en la era de la IA</b><span>Leer <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span></a>
+  <a class="post" href="../../"><small>Autor</small><b>Miguel Peidro Paredes</b><span>Ver portfolio <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span></a>
+</div></nav>
+
+<footer><div class="wrap"><span>© 2026 Miguel Peidro Paredes</span><span>Publicado también en LinkedIn</span></div></footer>
+</body></html>
